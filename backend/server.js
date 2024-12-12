@@ -10,9 +10,14 @@ ConnectDB();
 
 const app = express();
 app.use(express.json());
+app.use('/extensions',express.static(path.join(__dirname,'frontend')));
+
 app.use('/extensions',express.static(path.join(__dirname,'Extensions')));
 app.use("/api/users",routes);
 
+app.get('*',(req,res)=>{
+    res.sendFile(path.resolve(__dirname,'frontend','index.html')
+});
 
 app.listen(5000,()=>{
 
