@@ -1,0 +1,128 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: #f5f7fa;
+    color: #333;
+  }
+  
+  .container {
+    width: 80%;
+    margin: auto;
+    max-width: 1200px;
+  }
+  
+  /* Header */
+  header {
+    background: #010412;
+    padding: 1rem 0;
+    color: #09af53;
+  }
+  
+  header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  header nav ul li {
+    margin-left: 20px;
+  }
+  
+  header nav ul li a {
+    color: #09af53;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  header nav ul li a:hover,
+  header nav ul li a.active {
+    color: #ffc107;
+  }
+  
+  /* About Section */
+  .about-section {
+    padding: 3rem 0;
+    background: #fff;
+  }
+  
+  .about-section h1 {
+    font-size: 2.5rem;
+    color: #09af53;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .about-section p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #555;
+    line-height: 1.8;
+  }
+  
+  .about-section h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1rem;
+    border-left: 5px solid #09af53;
+    padding-left: 10px;
+  }
+  
+  .about-section ul {
+    list-style-type: none;
+    margin: 1rem 0;
+    padding: 0;
+  }
+  
+  .about-section ul li {
+    background: #f7f8fa;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .about-section ul li::before {
+    content: "✓";
+    color: #09af53;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .about-section ul li:hover {
+    background: #e6f7ed;
+  }
+  
+  /* Standout Feature */
+  .about-section p:first-of-type {
+    background: #e6f7ed;
+    border-left: 5px solid #09af53;
+    padding: 1rem;
+    border-radius: 5px;
+  }
+  
+  /* Footer */
+  footer {
+    background: #282828;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+  }
+  
+  footer p {
+    margin: 0;
+  }
+

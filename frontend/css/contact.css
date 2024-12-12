@@ -1,0 +1,139 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: #f7f8fa;
+    color: #333;
+  }
+  
+  .container {
+    width: 80%;
+    margin: auto;
+    max-width: 1200px;
+  }
+  
+  /* Header */
+  header {
+    background: #010412;
+    padding: 1rem 0;
+    color: #09af53;
+  }
+  
+  header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  header nav ul li {
+    margin-left: 20px;
+  }
+  
+  header nav ul li a {
+    color: #09af53;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  header nav ul li a:hover,
+  header nav ul li a.active {
+    color: #ffc107;
+  }
+  
+  /* Contact Section */
+  .contact-section {
+    padding: 3rem 0;
+    background: #fff;
+    text-align: center;
+  }
+  
+  .contact-section h1 {
+    font-size: 2.5rem;
+    color: #09af53;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-section p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #555;
+  }
+  
+  #contactForm {
+    background: #f7f8fa;
+    border: 1px solid #ddd;
+    padding: 2rem;
+    border-radius: 5px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+  
+  .form-group label {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: #09af53;
+    box-shadow: 0 0 5px rgba(9, 175, 83, 0.5);
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  .btn {
+    background: #09af53;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .btn:hover {
+    background: #07a74b;
+  }
+  
+  /* Footer */
+  footer {
+    background: #282828;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+  }
+  
+  footer p {
+    margin: 0;
+  }

@@ -1,0 +1,40 @@
+{
+    "manifest_version": 3,
+    "name": "Speech to Subtitles",
+    "description": "Convert audio to subtitles",
+    "version": "1.0",
+    "permissions": [
+      "activeTab",
+      "storage",
+      "tabs"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ],
+    "host_permissions": [
+      "http://*/*",
+      "https://*/*"
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icons/icon-16.jpg.png",
+        "48": "icons/icon-48.jpg.png",
+        "128": "icons/icon-128.jpg.png"
+      }
+    },
+    "content_security_policy": {
+      "extension_pages": {
+        "script-src": ["'self'", "https://cdn.jsdelivr.net"],
+        "object-src": ["'none'"]
+      }
+    }
+  }
+  
+  

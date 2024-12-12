@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Accessible Web</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!-- Skip Navigation Link -->
+  <a href="#pluginGrid" class="skip-link" style="position: absolute; top: -40px; left: 0; background-color: #000; color: #fff; padding: 8px 12px; text-decoration: none;">Skip to main content</a>
+
+  <!-- Header -->
+  <header role="banner">
+    <div class="container">
+      <div class="logo" aria-label="Accessible Web Logo">AccessibleWeb</div>
+      <nav role="navigation" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="dashboard.html" class="active">Dashboard</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Dashboard Section -->
+  <section class="dashboard-section">
+    <div class="container">
+      <h1>Your Accessibility Plugins</h1>
+      <p>Explore and download plugins tailored for your needs. Use the dropdown below to filter plugins based on your condition:</p>
+
+      <!-- Plugin Grid -->
+      <div id="pluginGrid" class="plugin-grid">
+        <!-- Plugin Bubble: Text to Voice -->
+        <div class="plugin-bubble" role="region" aria-labelledby="plugin1-title" id="plugin1">
+          <h2 id="plugin1-title">Text to Voice</h2>
+          <p>Convert on-screen text to spoken words for visually impaired users.</p>
+          <img
+            src="images/text-to-voice-thumbnail.gif"
+            class="video-thumbnail"
+            alt="Text to Voice Demo"
+            onclick="showVideo('text-to-voice-video')"
+            role="button"
+            aria-label="Click to view Text to Voice demo video"
+          />
+          <div id="text-to-voice-video" class="plugin-video" aria-live="polite" role="region">
+            <video controls width="100%" aria-label="Text to Voice demo video">
+              <source src="videos/text-to-voice-demo.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <button class="btn download-btn" aria-label="Download Text to Voice plugin" tabindex="0">Download</button>
+          <button class="btn set-shortcut-btn" onclick="setShortcut('plugin1')">Set Shortcut</button>
+          <div id="shortcut-input-plugin1" class="shortcut-input" style="display:none;">
+            <input type="text" placeholder="Press a key" onkeydown="storeShortcut(event, 'plugin1')">
+          </div>
+        </div>
+
+        <!-- Plugin Bubble: Audio to Subtitles -->
+        <div class="plugin-bubble" role="region" aria-labelledby="plugin2-title" id="plugin2">
+          <h2 id="plugin2-title">Audio to Subtitles</h2>
+          <p>Generate real-time subtitles from audio for hearing-impaired users.</p>
+          <img
+            src="images/audio-to-subtitles.gif"
+            class="video-thumbnail"
+            alt="Audio to Subtitles Demo"
+            onclick="showVideo('audio-to-subtitles-video')"
+            role="button"
+            aria-label="Click to view Audio to Subtitles demo video"
+          />
+          <div id="audio-to-subtitles-video" class="plugin-video" aria-live="polite" role="region">
+            <video controls width="100%" aria-label="Audio to Subtitles demo video">
+              <source src="videos/audio-to-subtitles-demo.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <button class="btn download-btn" aria-label="Download Audio to Subtitles plugin" tabindex="0">Download</button>
+          <button class="btn set-shortcut-btn" onclick="setShortcut('plugin2')">Set Shortcut</button>
+          <div id="shortcut-input-plugin2" class="shortcut-input" style="display:none;">
+            <input type="text" placeholder="Press a key" onkeydown="storeShortcut(event, 'plugin2')">
+          </div>
+        </div>
+
+        <!-- Plugin Bubble: Sign to Subtitles -->
+        <div class="plugin-bubble" role="region" aria-labelledby="plugin3-title" id="plugin3">
+          <h2 id="plugin3-title">Sign to Subtitles</h2>
+          <p>Translate sign language gestures into readable subtitles.</p>
+          <img
+            src="images/sign-to-subtitles.gif"
+            class="video-thumbnail"
+            alt="Sign to Subtitles Demo"
+            onclick="showVideo('sign-to-subtitles-video')"
+            role="button"
+            aria-label="Click to view Sign to Subtitles demo video"
+          />
+          <div id="sign-to-subtitles-video" class="plugin-video" aria-live="polite" role="region">
+            <video controls width="100%" aria-label="Sign to Subtitles demo video">
+              <source src="videos/sign-to-subtitles-demo.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <button class="btn download-btn" aria-label="Download Sign to Subtitles plugin" tabindex="0">Download</button>
+          <button class="btn set-shortcut-btn" onclick="setShortcut('plugin3')">Set Shortcut</button>
+          <div id="shortcut-input-plugin3" class="shortcut-input" style="display:none;">
+            <input type="text" placeholder="Press a key" onkeydown="storeShortcut(event, 'plugin3')">
+          </div>
+        </div>
+
+        <!-- Plugin Bubble: Low Bandwidth -->
+        <div class="plugin-bubble" role="region" aria-labelledby="plugin4-title" id="plugin4">
+          <h2 id="plugin4-title">Low Bandwidth</h2>
+          <p>Optimize website browsing for areas with poor internet connectivity.</p>
+          <img
+            src="images/low-bandwidth.gif"
+            class="video-thumbnail"
+            alt="Low Bandwidth Demo"
+            onclick="showVideo('low-bandwidth-video')"
+            role="button"
+            aria-label="Click to view Low Bandwidth demo video"
+          />
+          <div id="low-bandwidth-video" class="plugin-video" aria-live="polite" role="region">
+            <video controls width="100%" aria-label="Low Bandwidth demo video">
+              <source src="videos/low-bandwidth-demo.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <button class="btn download-btn" aria-label="Download Low Bandwidth plugin" tabindex="0">Download</button>
+          <button class="btn set-shortcut-btn" onclick="setShortcut('plugin4')">Set Shortcut</button>
+          <div id="shortcut-input-plugin4" class="shortcut-input" style="display:none;">
+            <input type="text" placeholder="Press a key" onkeydown="storeShortcut(event, 'plugin4')">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <div class="container">
+      <p>© 2024 AccessibleWeb. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
