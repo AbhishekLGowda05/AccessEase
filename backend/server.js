@@ -1,9 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const routes = require('./routes');
 const path = require('path');
-const cors = require('cors');
 const ConnectDB = require('./Database');
-const userRoutes = require('./routes');
 
 dotenv.config();
 ConnectDB();
@@ -11,16 +10,29 @@ ConnectDB();
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+
+app.use(express.static(path.join(__dirname, 'frontend')));
 
 app.use('/extensions', express.static(path.join(__dirname, 'Extensions')));
 
-app.use('/api/users', userRoutes);
+app.use('/api/users', routes);
 
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'frontend', 'index.html'), (err) => {
-    if (err) res.status(500).send('Error loading frontend');
-  });
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
 });
 
-app.listen(5000, () => console.log('Server is running on port 5000'));
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend', 'login.html'));
+});
+
+app.get('/contact', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend', 'contact.html'));
+});
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
+});
+
+app.listen(5000, () => {
+    console.log('Server started listening at port 5000');
+});
