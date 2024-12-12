@@ -1,0 +1,2 @@
+password for mongoDB = g8rNRyQsTMyTW6Sa
+mongodb+srv://agl1792005:<g8rNRyQsTMyTW6Sa>@accessease.k27c6.mongodb.net/AccessEase?retryWrites=true&w=majority&appName=AccessEase
