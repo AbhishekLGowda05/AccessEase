@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "YouTube Video Transcript",
+    "version": "1.0",
+    "description": "Display and copy a hard-coded transcript for a YouTube video.",
+    "permissions": ["activeTab", "scripting", "storage"],
+    "host_permissions": ["https://www.youtube.com/*"],
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts":[{
+        "matches":["https://www.youtube.com/watch?v=OoGfRH-vq4w"],
+        "js":["content.js"]
+    }]
+    }
+
