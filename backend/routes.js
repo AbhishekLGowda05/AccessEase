@@ -70,10 +70,13 @@ router.post('/', async (req, res) => {
     return res.status(400).json({ success: false, message: 'All fields are required' });
   }
   try {
+    let user= User.findOne({name});
+    if(!user){
     const newUser = new User({ name, mail, disability, shortcutKey });
     await newUser.save();
-    res.status(201).json({ success: true, data: newUser });
-  } catch (error) {
+    res.status(201).json({ success: true, data: newUser, password:newUser._id.toString()});
+  }
+} catch (error) {
     res.status(500).json({ success: false, message: 'Error creating user' });
   }
 });
