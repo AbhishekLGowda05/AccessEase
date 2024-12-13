@@ -1,41 +1,69 @@
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    width: 300px;
-    background-color: #f4f4f4;
-    text-align: center;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  width: 300px;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+/* Headings */
+h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Buttons */
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+/* Subtitle Box */
+#subtitle-box {
+  position: fixed;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.5;
+  max-width: 80%;
+  z-index: 9999;
+  display: none; /* Hidden by default */
+}
+
+/* Fade-in animation for subtitles */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
   }
-  
-  h2 {
-    color: #333;
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
   }
-  
-  button {
-    margin: 10px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:disabled {
-    background-color: #ddd;
-  }
-  
-  #transcription-container {
-    margin-top: 20px;
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  #transcription {
-    font-size: 16px;
-    color: #333;
-  }
+}
   
   
   
