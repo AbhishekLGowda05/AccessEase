@@ -117,59 +117,43 @@ function showVideo(videoId) {
     videoElement.style.display = videoElement.style.display === "block" ? "none" : "block";
 }
 
-// Function to handle shortcut input
-function setupShortcutHandlers(pluginId, storageKey) {
-  const setShortcutBtn = document.getElementById(`set-shortcut-btn-${pluginId}`);
-  const shortcutInput = document.getElementById(`shortcut-input-${pluginId}`);
-  const status = document.getElementById(`status-${pluginId}`);
+// Function to handle shortcut input and saving
+function setupShortcutHandler() {
+  const setShortcutBtn = document.getElementById("set-shortcut-btn");
+  const shortcutInput = document.getElementById("shortcut-input");
+  const status = document.getElementById("status");
 
-  // Handle key combination input
-  shortcutInput.addEventListener("keydown", (e) => {
-    e.preventDefault();  // Prevent default behavior of the keys
+  // Default hardcoded shortcut (Ctrl+Shift+T or Command+Shift+T for macOS)
+  const defaultShortcut = "Command+Option+Shift+R"; // Hardcoded default shortcut for text-to-speech
 
-    const keys = [];
+  // Set default shortcut in the input field (for user info)
+  shortcutInput.value = defaultShortcut;
 
-    // Capture the modifier keys
-    if (e.metaKey) {
-      keys.push("Command");  // macOS Command key
-    } else if (e.ctrlKey) {
-      keys.push("Ctrl");  // Windows/Linux Ctrl key
-    }
-
-    if (e.shiftKey) keys.push("Shift");
-    if (e.altKey) keys.push("Alt");
-
-    // Capture the main key (excluding modifier keys)
-    if (e.key && !["Control", "Shift", "Alt", "Meta"].includes(e.key)) {
-      keys.push(e.key.toUpperCase());
-    }
-
-    // Update the input field with the captured keys
-    shortcutInput.value = keys.join("+");
-  });
-
-  // Save the shortcut when the user clicks 'Set Shortcut'
+  // Handle saving the new shortcut
   setShortcutBtn.addEventListener("click", () => {
-    if (!shortcutInput.value) {
+    const newShortcut = shortcutInput.value.trim();
+
+    if (!newShortcut) {
       alert("Please enter a valid shortcut.");
       return;
     }
-    chrome.storage.sync.set({ [storageKey]: shortcutInput.value }, () => {
-      status.textContent = `Shortcut set to: ${shortcutInput.value}`;
+
+    // Save the new shortcut in storage
+    chrome.storage.sync.set({ userShortcut: newShortcut }, () => {
+      status.textContent = `Shortcut saved as: ${newShortcut}`;
       status.style.color = "green";
+
+      // Update chrome commands with the new shortcut
+      chrome.commands.update({
+        name: "_execute_action",
+        shortcut: newShortcut,
+      });
+      
+      // Show confirmation popup
+      alert("Shortcut saved successfully!");
     });
   });
 }
 
-// Setup handlers for each plugin (assuming plugin1 as an example)
-setupShortcutHandlers("plugin1", "shortcut_plugin1");
-
-// Register shortcut dynamically
-chrome.storage.sync.get("shortcut_plugin1", (data) => {
-  if (data.shortcut_plugin1) {
-    chrome.commands.update({
-      name: "activate_text_to_voice",
-      shortcut: data.shortcut_plugin1,
-    });
-  }
-});
+// Initialize the shortcut handler when the popup loads
+setupShortcutHandler();

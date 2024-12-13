@@ -18,8 +18,9 @@
     "commands": {
       "_execute_action": {
         "suggested_key": {
-          "default": "Ctrl+Shift+T"
+          "default": "Ctrl+Alt+Shift+R"
         },
+        "mac": "Command+Option+Shift+R",
         "description": "Activate Text to Voice Plugin"
       }
     },
