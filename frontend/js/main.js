@@ -112,11 +112,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function showVideo(videoId) {
-    const videoElement = document.getElementById(videoId);
-    videoElement.style.display = videoElement.style.display === "block" ? "none" : "block";
-}
-
 // Function to handle shortcut input and saving
 function setupShortcutHandler() {
   const setShortcutBtn = document.getElementById("set-shortcut-btn");
@@ -157,3 +152,44 @@ function setupShortcutHandler() {
 
 // Initialize the shortcut handler when the popup loads
 setupShortcutHandler();
+
+// Check for browser support
+if (!('webkitSpeechRecognition' in window)) {
+  alert('Sorry, your browser does not support voice recognition.');
+} else {
+  const recognition = new webkitSpeechRecognition();
+  recognition.continuous = true;
+  recognition.interimResults = false;
+  recognition.lang = 'en-US';
+
+  // Start voice recognition
+  document.getElementById('voiceCommandBtn').addEventListener('click', () => {
+    recognition.start();
+    alert('Voice recognition activated! Speak your command.');
+  });
+
+  recognition.onresult = (event) => {
+    const transcript = event.results[event.results.length - 1][0].transcript.trim().toLowerCase();
+
+    // Command handling
+    if (transcript.includes('home')) {
+      window.location.href = 'index.html';
+    } else if (transcript.includes('about')) {
+      window.location.href = 'about.html';
+    } else if (transcript.includes('contact')) {
+      window.location.href = 'contact.html';
+    } else if (transcript.includes('dashboard')) {
+      window.location.href = 'dashboard.html';
+    } else {
+      alert(`Unrecognized command: "${transcript}"`);
+    }
+  };
+
+  recognition.onerror = (event) => {
+    alert(`Error occurred in recognition: ${event.error}`);
+  };
+
+  recognition.onend = () => {
+    alert('Voice recognition stopped.');
+  };
+}

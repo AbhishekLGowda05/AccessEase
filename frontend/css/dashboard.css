@@ -132,23 +132,18 @@
   }
   
   /* Plugin GIF and Video */
-  .plugin-bubble .video-thumbnail {
-    margin-top: 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 80%;
-  }
-  
-  .plugin-bubble .video-thumbnail:hover {
-    opacity: 0.8;
-  }
-  
-  .plugin-bubble .plugin-video {
-    display: none;
-    margin-top: 1rem;
-    border-radius: 8px;
+  /* Video Styling */
+  .plugin-video {
     width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
+
+.plugin-video:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
   
   /* Footer */
   footer {
