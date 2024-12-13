@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'frontend')));
 
-app.use('/extensions', express.static(path.join(__dirname, 'Extensions')));
+app.use( express.static(path.join(__dirname, 'Extensions')));
 
 app.use('/api/users', routes);
 
