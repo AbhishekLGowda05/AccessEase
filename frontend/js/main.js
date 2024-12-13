@@ -117,40 +117,59 @@ function showVideo(videoId) {
     videoElement.style.display = videoElement.style.display === "block" ? "none" : "block";
 }
 
-function setShortcut(pluginId) {
-    const inputField = document.getElementById(`shortcut-input-${pluginId}`);
-    inputField.style.display = 'block'; // Show the input field
-    inputField.querySelector('input').focus(); // Focus on the input field
-}
+// Function to handle shortcut input
+function setupShortcutHandlers(pluginId, storageKey) {
+  const setShortcutBtn = document.getElementById(`set-shortcut-btn-${pluginId}`);
+  const shortcutInput = document.getElementById(`shortcut-input-${pluginId}`);
+  const status = document.getElementById(`status-${pluginId}`);
 
-function storeShortcut(event, pluginId) {
-    event.preventDefault();
+  // Handle key combination input
+  shortcutInput.addEventListener("keydown", (e) => {
+    e.preventDefault();  // Prevent default behavior of the keys
 
-    const shortcut = event.key;
-    if (shortcut) {
-      localStorage.setItem(`${pluginId}-shortcut`, shortcut);
-      alert(`Shortcut for ${pluginId} set to "${shortcut}".`);
-      document.getElementById(`shortcut-input-${pluginId}`).style.display = 'none';
+    const keys = [];
+
+    // Capture the modifier keys
+    if (e.metaKey) {
+      keys.push("Command");  // macOS Command key
+    } else if (e.ctrlKey) {
+      keys.push("Ctrl");  // Windows/Linux Ctrl key
     }
+
+    if (e.shiftKey) keys.push("Shift");
+    if (e.altKey) keys.push("Alt");
+
+    // Capture the main key (excluding modifier keys)
+    if (e.key && !["Control", "Shift", "Alt", "Meta"].includes(e.key)) {
+      keys.push(e.key.toUpperCase());
+    }
+
+    // Update the input field with the captured keys
+    shortcutInput.value = keys.join("+");
+  });
+
+  // Save the shortcut when the user clicks 'Set Shortcut'
+  setShortcutBtn.addEventListener("click", () => {
+    if (!shortcutInput.value) {
+      alert("Please enter a valid shortcut.");
+      return;
+    }
+    chrome.storage.sync.set({ [storageKey]: shortcutInput.value }, () => {
+      status.textContent = `Shortcut set to: ${shortcutInput.value}`;
+      status.style.color = "green";
+    });
+  });
 }
 
-function checkSavedShortcuts() {
-    ['plugin1', 'plugin2', 'plugin3', 'plugin4'].forEach(pluginId => {
-      const savedShortcut = localStorage.getItem(`${pluginId}-shortcut`);
-      if (savedShortcut) {
-        console.log(`Shortcut for ${pluginId}: ${savedShortcut}`);
-      }
-    });
-}
+// Setup handlers for each plugin (assuming plugin1 as an example)
+setupShortcutHandlers("plugin1", "shortcut_plugin1");
 
-document.addEventListener('keydown', function(event) {
-    ['plugin1', 'plugin2', 'plugin3', 'plugin4'].forEach(pluginId => {
-      const savedShortcut = localStorage.getItem(`${pluginId}-shortcut`);
-      if (savedShortcut && event.key === savedShortcut) {
-        console.log(`Activating ${pluginId} plugin due to shortcut "${event.key}"`);
-        alert(`Activating ${pluginId} plugin...`);
-      }
+// Register shortcut dynamically
+chrome.storage.sync.get("shortcut_plugin1", (data) => {
+  if (data.shortcut_plugin1) {
+    chrome.commands.update({
+      name: "activate_text_to_voice",
+      shortcut: data.shortcut_plugin1,
     });
+  }
 });
-
-document.addEventListener('DOMContentLoaded', checkSavedShortcuts);

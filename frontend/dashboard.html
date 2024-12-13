@@ -53,10 +53,9 @@
             </video>
           </div>
           <button class="btn download-btn" aria-label="Download Text to Voice plugin" tabindex="0">Download</button>
-          <button class="btn set-shortcut-btn" onclick="setShortcut('plugin1')">Set Shortcut</button>
-          <div id="shortcut-input-plugin1" class="shortcut-input" style="display:none;">
-            <input type="text" placeholder="Press a key" onkeydown="storeShortcut(event, 'plugin1')">
-          </div>
+          <button id="set-shortcut-btn-plugin1" aria-label="Set Shortcut for Text to Voice Plugin">Set Shortcut</button>
+          <input type="text" id="shortcut-input-plugin1" placeholder="Ctrl+Shift+T" readonly onfocus="this.removeAttribute('readonly');" onkeydown="captureShortcut(event)"/>
+          <p id="status-plugin1"></p>
         </div>
 
         <!-- Plugin Bubble: Audio to Subtitles -->
@@ -78,10 +77,9 @@
             </video>
           </div>
           <button class="btn download-btn" aria-label="Download Audio to Subtitles plugin" tabindex="0">Download</button>
-          <button class="btn set-shortcut-btn" onclick="setShortcut('plugin2')">Set Shortcut</button>
-          <div id="shortcut-input-plugin2" class="shortcut-input" style="display:none;">
-            <input type="text" placeholder="Press a key" onkeydown="storeShortcut(event, 'plugin2')">
-          </div>
+          <button id="set-shortcut-btn-plugin2">Set Shortcut</button>
+          <input type="text" id="shortcut-input-plugin2" placeholder="Ctrl+Shift+S" readonly />
+          <p id="status-plugin2"></p>
         </div>
 
         <!-- Plugin Bubble: Sign to Subtitles -->
@@ -103,10 +101,9 @@
             </video>
           </div>
           <button class="btn download-btn" aria-label="Download Sign to Subtitles plugin" tabindex="0">Download</button>
-          <button class="btn set-shortcut-btn" onclick="setShortcut('plugin3')">Set Shortcut</button>
-          <div id="shortcut-input-plugin3" class="shortcut-input" style="display:none;">
-            <input type="text" placeholder="Press a key" onkeydown="storeShortcut(event, 'plugin3')">
-          </div>
+          <button id="set-shortcut-btn-plugin3">Set Shortcut</button>
+          <input type="text" id="shortcut-input-plugin3" placeholder="Ctrl+Shift+F" readonly />
+          <p id="status-plugin3"></p>
         </div>
 
         <!-- Plugin Bubble: Low Bandwidth -->
@@ -128,10 +125,9 @@
             </video>
           </div>
           <button class="btn download-btn" aria-label="Download Low Bandwidth plugin" tabindex="0">Download</button>
-          <button class="btn set-shortcut-btn" onclick="setShortcut('plugin4')">Set Shortcut</button>
-          <div id="shortcut-input-plugin4" class="shortcut-input" style="display:none;">
-            <input type="text" placeholder="Press a key" onkeydown="storeShortcut(event, 'plugin4')">
-          </div>
+          <button id="set-shortcut-btn-plugin4">Set Shortcut</button>
+          <input type="text" id="shortcut-input-plugin4" placeholder="Ctrl+Shift+L" readonly />
+          <p id="status-plugin4"></p>
         </div>
       </div>
     </div>
